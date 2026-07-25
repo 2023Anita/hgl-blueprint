@@ -3,232 +3,302 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#071015">
-    <meta name="description" content="HGL Blueprint designs bounded Harness-Graph-Loop systems before they run.">
-    <title>HGL Blueprint — Design before execution</title>
+    <meta name="theme-color" content="#fbfaf6">
+    <meta name="description" content="HGL Blueprint turns requirements into reviewable Harness–Graph–Loop system contracts before anything runs.">
+    <title>HGL Blueprint — Design, review, then build</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Noto+Sans+JP:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300,0,0&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles.css">
     <script src="assets/app.js" defer></script>
   </head>
   <body>
-    <canvas id="signal-field" aria-hidden="true"></canvas>
-    <div class="grain" aria-hidden="true"></div>
-
-    <header class="masthead">
+    <header class="site-header">
       <a class="brand" href="#top" aria-label="HGL Blueprint">
-        <svg viewBox="0 0 52 52" aria-hidden="true">
-          <path d="M8 8v36M44 8v36M8 26h36"/>
-          <circle cx="8" cy="8" r="3"/><circle cx="8" cy="44" r="3"/>
-          <circle cx="44" cy="8" r="3"/><circle cx="44" cy="44" r="3"/>
-          <circle cx="26" cy="26" r="4"/>
-        </svg>
+        <img src="assets/favicon.svg" alt="">
         <span>HGL <i>Blueprint</i></span>
       </a>
+
       <nav aria-label="Primary navigation">
-        <a href="#journey" data-i18n="navJourney">How it works</a>
-        <a href="#architecture" data-i18n="navArchitecture">Architecture</a>
-        <a href="#contract" data-i18n="navContract">Contract</a>
-        <a href="#start" data-i18n="navStart">Start</a>
+        <a class="active" href="#top" data-i18n="navOverview">Overview</a>
+        <a href="#workflow" data-i18n="navWorkflow">How it works</a>
+        <a href="#contract" data-i18n="navSchema">Schema</a>
+        <a href="#example" data-i18n="navExamples">Examples</a>
       </nav>
-      <div class="language" role="group" aria-label="Language">
-        <button type="button" data-lang="en">EN</button>
-        <button type="button" data-lang="zh">中</button>
-        <button type="button" data-lang="ja">日</button>
-        <button type="button" data-lang="ko">한</button>
+
+      <div class="header-actions">
+        <a class="github-link" href="https://github.com/2023Anita/hgl-blueprint" target="_blank" rel="noreferrer">
+          GitHub
+          <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+        </a>
+        <div class="language" role="group" aria-label="Language">
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="zh">中</button>
+          <button type="button" data-lang="ja">日</button>
+          <button type="button" data-lang="ko">한</button>
+        </div>
       </div>
     </header>
 
     <main id="top">
-      <section class="hero">
-        <div class="eyebrow reveal">
-          <span class="live-dot"></span>
-          <span data-i18n="eyebrow">Specification-first agent systems</span>
-        </div>
-        <h1 class="reveal delay-1">
-          <span data-i18n="heroLine1">Design the system</span>
-          <em data-i18n="heroLine2">before it runs.</em>
-        </h1>
-        <p class="hero-copy reveal delay-2" data-i18n="heroCopy">
-          Turn intent into a bounded Harness–Graph–Loop Blueprint. Validate it.
-          Ask a human. Only then generate the system.
-        </p>
-        <div class="hero-actions reveal delay-3">
-          <a class="button primary" href="#contract">
-            <span data-i18n="exploreContract">Explore the contract</span>
-            <span aria-hidden="true">↘</span>
-          </a>
-          <a class="button ghost" href="https://github.com/2023Anita/hgl-blueprint">
-            <span data-i18n="viewSource">View source</span>
-            <span aria-hidden="true">↗</span>
-          </a>
-        </div>
-
-        <div class="compiler reveal delay-4" aria-label="Blueprint lifecycle">
-          <div class="compiler-head">
-            <span>HGL / COMPILE TRACE</span>
-            <span class="trace-status" data-i18n="awaitingApproval">AWAITING HUMAN APPROVAL</span>
+      <section class="hero manual-grid" aria-labelledby="hero-title">
+        <aside class="manual-rail" aria-label="Field manual index">
+          <div>
+            <p class="manual-name">FIELD MANUAL</p>
+            <p class="manual-version">v 1.0.0</p>
           </div>
-          <ol>
-            <li class="done"><b>01</b><span data-i18n="stepIntent">Intent bounded</span><i>PASS</i></li>
-            <li class="done"><b>02</b><span data-i18n="stepBlueprint">Blueprint typed</span><i>PASS</i></li>
-            <li class="active"><b>03</b><span data-i18n="stepApproval">Human decision</span><i>GATE</i></li>
-            <li><b>04</b><span data-i18n="stepBuild">System generated</span><i>HOLD</i></li>
-            <li><b>05</b><span data-i18n="stepEvidence">Evidence verified</span><i>HOLD</i></li>
-          </ol>
-        </div>
-      </section>
 
-      <section class="manifesto">
-        <p class="section-index">01 / WHY</p>
-        <div>
-          <h2 data-i18n="whyTitle">More agents are not a design.</h2>
-          <p data-i18n="whyCopy">
-            Reliability comes from explicit boundaries: what enters, what may
-            act, what returns, what proves success, and when the system stops.
+          <ol class="rail-index">
+            <li><a href="#top"><b>01</b><span><em data-i18n="railOverview">Overview</em><small data-i18n="railOverviewCopy">What you get</small></span></a></li>
+            <li><a href="#workflow"><b>02</b><span><em data-i18n="railWorkflow">How it works</em><small data-i18n="railWorkflowCopy">From requirement to evidence</small></span></a></li>
+            <li><a href="#contract"><b>03</b><span><em data-i18n="railSchema">Schema</em><small data-i18n="railSchemaCopy">A reviewable contract</small></span></a></li>
+            <li><a href="#example"><b>04</b><span><em data-i18n="railExample">Example</em><small data-i18n="railExampleCopy">From prompt to Blueprint</small></span></a></li>
+            <li><a href="https://github.com/2023Anita/hgl-blueprint#the-contract" target="_blank" rel="noreferrer"><b>05</b><span><em data-i18n="railReference">Reference</em><small data-i18n="railReferenceCopy">Terms and rules</small></span></a></li>
+          </ol>
+
+          <figure class="traveler-note">
+            <img src="assets/hgl-blueprint-illustrations/05-field-manual-traveler.png" alt="" loading="eager">
+            <blockquote data-i18n="travelerQuote">A good system begins with one clear requirement.</blockquote>
+          </figure>
+
+          <a class="rail-example" href="#example">
+            <span data-i18n="realExampleLabel">REAL EXAMPLE</span>
+            <strong data-i18n="realExampleTitle">Repair an out-of-bounds access and improve stability</strong>
+            <small data-i18n="viewFullExample">View full example</small>
+          </a>
+        </aside>
+
+        <div class="hero-main">
+          <div class="hero-heading">
+            <span class="hero-number">01</span>
+            <div>
+              <p class="section-kicker"><span data-i18n="overviewLabel">Overview</span></p>
+              <h1 id="hero-title">
+                <span data-i18n="heroLead">Design first.</span>
+                <span><em data-i18n="heroAccent">Approve, then</em> <b data-i18n="heroTail">build.</b></span>
+              </h1>
+            </div>
+          </div>
+          <p class="hero-copy" data-i18n="heroCopy">
+            HGL Blueprint turns your requirement into a validated, reusable, and auditable system contract.
           </p>
+
+          <div class="hero-actions">
+            <a class="button primary" href="#quick-start">
+              <span data-i18n="createBlueprint">Create my Blueprint</span>
+              <span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span>
+            </a>
+            <a class="button secondary" href="https://github.com/2023Anita/hgl-blueprint#five-minute-start" target="_blank" rel="noreferrer">
+              <span data-i18n="viewRealExample">View a real example</span>
+              <span class="material-symbols-rounded" aria-hidden="true">visibility</span>
+            </a>
+          </div>
+
+          <section class="quick-start" id="quick-start" aria-labelledby="quick-start-title">
+            <div class="quick-start-heading">
+              <h2 id="quick-start-title" data-i18n="quickStartTitle">Quick start</h2>
+              <span data-i18n="twoSteps">2 steps</span>
+            </div>
+
+            <div class="quick-start-grid">
+              <article class="prompt-step">
+                <div class="step-heading">
+                  <span>1</span>
+                  <div>
+                    <h3 data-i18n="stepOneTitle">Write your requirement</h3>
+                    <p data-i18n="stepOneCopy">Natural language is enough. Be specific about the outcome.</p>
+                  </div>
+                </div>
+                <div class="prompt-box">
+                  <span class="prompt-label" data-i18n="promptLabel">Your Skill / requirement</span>
+                  <textarea id="starter-prompt" maxlength="800" data-i18n-placeholder="starterPrompt" aria-label="Starter prompt">Use $harness-graph-loop-builder to design a reviewable HGL Blueprint for my goal. Do not build until I approve.</textarea>
+                  <span class="character-count"><b>0</b>/800</span>
+                  <button class="copy-button" type="button" data-copy-target="starter-prompt">
+                    <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+                    <span data-i18n="copyPrompt">Copy prompt</span>
+                  </button>
+                </div>
+              </article>
+
+              <span class="step-arrow material-symbols-rounded" aria-hidden="true">arrow_forward</span>
+
+              <article class="approval-step">
+                <div class="step-heading">
+                  <span>2</span>
+                  <div>
+                    <h3 data-i18n="stepTwoTitle">Generate and review</h3>
+                    <p data-i18n="stepTwoCopy">Nothing is built before you inspect the contract.</p>
+                  </div>
+                </div>
+                <div class="approval-stamp">
+                  <span data-i18n="designComplete">DESIGN COMPLETE</span>
+                  <strong data-i18n="awaitingApproval">AWAITING APPROVAL</strong>
+                  <small>HUMAN APPROVAL REQUIRED</small>
+                </div>
+              </article>
+            </div>
+          </section>
         </div>
-        <aside>
-          <span data-i18n="smallestShape">Choose the smallest justified shape</span>
-          <strong>1 → N</strong>
+
+        <aside class="blueprint-panel" id="contract" aria-labelledby="blueprint-panel-title">
+          <div class="blueprint-head">
+            <div>
+              <span>BLUEPRINT</span>
+              <strong id="blueprint-panel-title" data-i18n="blueprintPreview">Preview</strong>
+            </div>
+            <span>v 1.0.0</span>
+          </div>
+
+          <div class="blueprint-canvas">
+            <button class="blueprint-node intent active" type="button" data-node="intent">
+              <span class="material-symbols-rounded" aria-hidden="true">description</span>
+              <b>INTENT</b>
+              <small data-i18n="intentNode">Bound the outcome</small>
+            </button>
+            <button class="blueprint-node harness" type="button" data-node="harness">
+              <span class="material-symbols-rounded" aria-hidden="true">shield</span>
+              <b>HARNESS</b>
+              <small data-i18n="harnessNode">Tools and constraints</small>
+            </button>
+            <div class="blueprint-branches">
+              <button class="blueprint-node graph" type="button" data-node="graph">
+                <span class="material-symbols-rounded" aria-hidden="true">account_tree</span>
+                <b>GRAPH</b>
+                <small data-i18n="graphNode">Dependencies</small>
+              </button>
+              <button class="blueprint-node loop" type="button" data-node="loop">
+                <span class="material-symbols-rounded" aria-hidden="true">sync</span>
+                <b>LOOP</b>
+                <small data-i18n="loopNode">Feedback and stop</small>
+              </button>
+            </div>
+            <button class="blueprint-node evidence" type="button" data-node="evidence">
+              <span class="material-symbols-rounded" aria-hidden="true">verified</span>
+              <b>EVIDENCE</b>
+              <small data-i18n="evidenceNode">Durable proof</small>
+            </button>
+          </div>
+
+          <div class="node-detail" aria-live="polite">
+            <span class="material-symbols-rounded" aria-hidden="true">info</span>
+            <p data-node-detail data-i18n="intentDetail">Defines the goal, non-goals, inputs, outputs, and acceptance criteria.</p>
+          </div>
+
+          <div class="blueprint-status">
+            <span class="material-symbols-rounded" aria-hidden="true">verified_user</span>
+            <span data-i18n="statusLabel">Status</span>
+            <strong data-i18n="statusPending">Awaiting approval</strong>
+          </div>
         </aside>
       </section>
 
-      <section class="journey" id="journey">
+      <section class="workflow" id="workflow">
         <div class="section-heading">
-          <p class="section-index">02 / JOURNEY</p>
-          <div>
-            <h2 data-i18n="journeyTitle">From a need to a system you can inspect.</h2>
-            <p class="section-lead" data-i18n="journeyCopy">The Blueprint keeps design separate from execution, and keeps evidence separate from conversation volume.</p>
-          </div>
+          <p class="section-kicker"><span>02</span></p>
+          <h2><span data-i18n="workflowTitleLead">From requirement to</span> <em>Evidence</em><span data-i18n="workflowTitleTail">, with validation and a human gate built in.</span></h2>
+          <a class="section-link" href="https://github.com/2023Anita/hgl-blueprint#the-three-layers" target="_blank" rel="noreferrer">
+            <span data-i18n="learnWorkflow">Learn how it works</span>
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span>
+          </a>
         </div>
-        <div class="story-grid">
-          <figure>
-            <img src="assets/hgl-blueprint-illustrations/01-intent-to-blueprint.png" alt="" loading="lazy">
-            <figcaption><b>01</b><span data-i18n="storyOne">Bound the intent. Write the Blueprint. Leave the toolbox closed.</span></figcaption>
-          </figure>
-          <figure>
-            <img src="assets/hgl-blueprint-illustrations/02-harness-graph-loop.png" alt="" loading="lazy">
-            <figcaption><b>02</b><span data-i18n="storyTwo">Separate environment control, dependency routing, and local feedback.</span></figcaption>
-          </figure>
-          <figure>
-            <img src="assets/hgl-blueprint-illustrations/03-human-approval-gate.png" alt="" loading="lazy">
-            <figcaption><b>03</b><span data-i18n="storyThree">A human reviews the design before generation begins.</span></figcaption>
-          </figure>
-          <figure>
-            <img src="assets/hgl-blueprint-illustrations/04-evidence-handoff.png" alt="" loading="lazy">
-            <figcaption><b>04</b><span data-i18n="storyFour">Workers return compact results and evidence—not whole transcripts.</span></figcaption>
-          </figure>
-        </div>
-      </section>
 
-      <section class="architecture" id="architecture">
-        <div class="section-heading">
-          <p class="section-index">03 / SYSTEM</p>
-          <h2 data-i18n="architectureTitle">Three layers. One enforceable contract.</h2>
-        </div>
-        <div class="layer-stack">
-          <article class="layer harness">
-            <div class="layer-number">03</div>
+        <ol class="workflow-track">
+          <li>
+            <span>01</span>
             <div>
-              <p class="mono">HARNESS / RUNTIME POLICY</p>
-              <h3 data-i18n="harnessTitle">Control the environment.</h3>
-              <p data-i18n="harnessCopy">Tools, permissions, context, budgets, state, evidence, cancellation, and provider boundaries.</p>
+              <b>INTENT</b>
+              <p data-i18n="workflowIntent">Clarify the problem and explicit boundaries.</p>
             </div>
-            <span class="layer-signal">BOUND</span>
-          </article>
-          <article class="layer graph">
-            <div class="layer-number">02</div>
+          </li>
+          <li>
+            <span>02</span>
             <div>
-              <p class="mono">GRAPH / DEPENDENCY MODEL</p>
-              <h3 data-i18n="graphTitle">Wire only real dependencies.</h3>
-              <p data-i18n="graphCopy">Typed nodes, explicit edges, entry points, failure routes, fan-in, and independent review.</p>
+              <b>HGL CORE</b>
+              <p data-i18n="workflowCore">Choose the smallest justified Harness, Graph, and Loop.</p>
             </div>
-            <span class="layer-signal">ROUTE</span>
-          </article>
-          <article class="layer loop">
-            <div class="layer-number">01</div>
+          </li>
+          <li>
+            <span>03</span>
             <div>
-              <p class="mono">LOOP / BOUNDED UNIT</p>
-              <h3 data-i18n="loopTitle">Make feedback change the next attempt.</h3>
-              <p data-i18n="loopCopy">Gather, act, verify, repair, persist, and stop—inside a finite budget.</p>
+              <b>VERIFIER</b>
+              <p data-i18n="workflowVerifier">Bind every acceptance criterion to a real check.</p>
             </div>
-            <span class="layer-signal">VERIFY</span>
-          </article>
-        </div>
+          </li>
+          <li>
+            <span>04</span>
+            <div>
+              <b>EVIDENCE</b>
+              <p data-i18n="workflowEvidence">Persist compact, traceable proof instead of transcripts.</p>
+            </div>
+          </li>
+        </ol>
+
+        <p class="safety-line">
+          <span class="material-symbols-rounded" aria-hidden="true">security</span>
+          <span data-i18n="safetyLine">Before human approval, generation and external effects remain locked.</span>
+        </p>
       </section>
 
-      <section class="contract" id="contract">
-        <div class="contract-copy">
-          <p class="section-index">04 / BLUEPRINT</p>
-          <h2 data-i18n="contractTitle">A design artifact a human can reject.</h2>
-          <p data-i18n="contractCopy">The Blueprint is provider-neutral, machine-validatable, and unable to approve itself. Material changes return it to review.</p>
-          <ul>
-            <li><span>01</span><b data-i18n="contractOne">Typed result envelopes, never transcripts</b></li>
-            <li><span>02</span><b data-i18n="contractTwo">Disjoint permission classes</b></li>
-            <li><span>03</span><b data-i18n="contractThree">Finite retry and no-progress budgets</b></li>
-            <li><span>04</span><b data-i18n="contractFour">Evidence-bound completion</b></li>
-          </ul>
+      <section class="example" id="example">
+        <div class="example-intro">
+          <p class="section-kicker"><span>03</span> / <span data-i18n="exampleLabel">Worked example</span></p>
+          <h2 data-i18n="exampleTitle">A code repair workflow that can prove it is done.</h2>
+          <p data-i18n="exampleCopy">The included example isolates diagnosis, repair, verification, and independent review without sharing full chat history.</p>
+          <a href="https://github.com/2023Anita/hgl-blueprint/blob/main/examples/code-repair/blueprint.json" target="_blank" rel="noreferrer">
+            <span data-i18n="openExample">Open blueprint.json</span>
+            <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+          </a>
         </div>
-        <div class="blueprint-card">
-          <div class="blueprint-grid"></div>
-          <div class="bp-label top">BLUEPRINT / 1.0.0</div>
-          <div class="bp-label bottom" data-i18n="reviewState">STATE: REVIEW</div>
-          <div class="bp-node n1"><span>INTENT</span></div>
-          <div class="bp-node n2"><span>HARNESS</span></div>
-          <div class="bp-node n3"><span>GRAPH</span></div>
-          <div class="bp-node n4"><span>LOOP</span></div>
-          <div class="bp-node n5"><span>EVIDENCE</span></div>
-          <svg viewBox="0 0 600 560" aria-hidden="true">
-            <path d="M90 110H298V215M298 215H488M298 215V355M298 355H490M298 355V470"/>
-          </svg>
-        </div>
-      </section>
 
-      <section class="principles" id="principles">
-        <div class="section-heading">
-          <p class="section-index">05 / INVARIANTS</p>
-          <h2 data-i18n="principlesTitle">No theatre. No silent escalation.</h2>
-        </div>
-        <div class="principle-grid">
-          <article><span>01</span><h3 data-i18n="p1Title">Fail closed</h3><p data-i18n="p1Copy">Missing evidence never becomes success.</p></article>
-          <article><span>02</span><h3 data-i18n="p2Title">Least privilege</h3><p data-i18n="p2Copy">Each phase receives only the capabilities it needs.</p></article>
-          <article><span>03</span><h3 data-i18n="p3Title">Honest adapters</h3><p data-i18n="p3Copy">Unsupported runtimes remain future work, not badges.</p></article>
-          <article><span>04</span><h3 data-i18n="p4Title">Durable handoff</h3><p data-i18n="p4Copy">A fresh agent can resume without reconstructing chat history.</p></article>
-        </div>
-      </section>
+        <div class="repair-board">
+          <div class="repair-intent">
+            <span data-i18n="repairIntentLabel">Requirement / Intent</span>
+            <strong data-i18n="repairIntentTitle">Repair an out-of-bounds access</strong>
+            <p data-i18n="repairIntentCopy">Ensure the limit never exceeds users.size().</p>
+          </div>
 
-      <section class="start" id="start">
-        <div class="section-heading">
-          <p class="section-index">06 / START</p>
-          <div>
-            <h2 data-i18n="startTitle">Yes—start from your own requirement.</h2>
-            <p class="section-lead" data-i18n="startCopy">Ask the Skill to design first. It will choose the smallest justified shape, validate the contract, and stop at the human approval gate.</p>
+          <div class="code-diff" aria-label="Code repair diff">
+            <div class="diff-head">
+              <span data-i18n="proposedChange">PROPOSED CHANGE</span>
+              <span>repair_bounds.py</span>
+            </div>
+            <code><span class="removed">123   for (size_t i = 0; i &lt;= limit; ++i) {</span>
+<span class="added">123   for (size_t i = 0; i &lt; users.size() &amp;&amp; i &lt; limit; ++i) {</span>
+<span>124       process(users[i]);</span>
+<span>125   }</span></code>
+          </div>
+
+          <div class="repair-proof">
+            <span data-i18n="verificationLabel">VERIFICATION</span>
+            <ul>
+              <li><span class="material-symbols-rounded" aria-hidden="true">check_circle</span><span data-i18n="proofNoBounds">No out-of-bounds access</span></li>
+              <li><span class="material-symbols-rounded" aria-hidden="true">check_circle</span><span data-i18n="proofTests">42 named tests pass</span></li>
+              <li><span class="material-symbols-rounded" aria-hidden="true">check_circle</span><span data-i18n="proofReview">Independent review recorded</span></li>
+            </ul>
+          </div>
+
+          <div class="repair-evidence">
+            <span data-i18n="evidenceLabel">EVIDENCE</span>
+            <ul>
+              <li data-i18n="evidenceTestReport">Test report</li>
+              <li data-i18n="evidenceCoverage">Coverage report</li>
+              <li data-i18n="evidenceChangeLog">Change log</li>
+              <li data-i18n="evidenceSignature">Signature and timestamp</li>
+            </ul>
           </div>
         </div>
-        <div class="start-grid">
-          <div class="prompt-card">
-            <span class="mono">PROMPT / COPY</span>
-            <code data-i18n="startPrompt">Use $harness-graph-loop-builder to design a reviewable HGL Blueprint for [my goal]. Do not build until I approve.</code>
-          </div>
-          <div class="scope-card">
-            <h3 data-i18n="useCasesTitle">Useful beyond research writing</h3>
-            <p data-i18n="useCasesCopy">Code repair · data analysis · medical education · content production · compliance · dataset quality · product delivery</p>
-            <a href="https://github.com/2023Anita/hgl-blueprint#five-minute-start" data-i18n="openGuide">Open the complete guide ↗</a>
-          </div>
-        </div>
       </section>
 
-      <section class="finale">
-        <p class="mono">HGL BLUEPRINT / V1</p>
-        <h2 data-i18n="finalTitle">Build fewer systems.<br>Trust the ones you build.</h2>
-        <p data-i18n="finalCopy">Provider-neutral by design. Codex-first in version one.</p>
-        <a class="button primary" href="https://github.com/2023Anita/hgl-blueprint">
-          <span data-i18n="readDocs">Read the documentation</span>
-          <span aria-hidden="true">↗</span>
-        </a>
+      <section class="final-cta">
+        <div>
+          <p class="section-kicker">HGL BLUEPRINT / V1</p>
+          <h2 data-i18n="finalTitle">Start with one clear requirement.</h2>
+        </div>
+        <button class="button primary copy-final" type="button" data-copy-target="starter-prompt">
+          <span data-i18n="copyAndStart">Copy the starter prompt</span>
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+        </button>
       </section>
     </main>
 
@@ -236,6 +306,8 @@
       <span>HGL BLUEPRINT © 2026</span>
       <span data-i18n="footer">MIT · Independent project · Explicit provenance</span>
     </footer>
-    <noscript>This site needs JavaScript for language switching and the animated graph.</noscript>
+
+    <div class="toast" role="status" aria-live="polite" data-i18n="copiedToast">Prompt copied</div>
+    <noscript>This site needs JavaScript for language switching and copy actions.</noscript>
   </body>
 </html>
