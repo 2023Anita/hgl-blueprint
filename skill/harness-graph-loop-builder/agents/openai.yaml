@@ -1,0 +1,9 @@
+interface:
+  display_name: "HGL Blueprint"
+  short_description: "Design approved Harness-Graph-Loop systems"
+  icon_small: "./assets/icon-small.svg"
+  icon_large: "./assets/logo.svg"
+  brand_color: "#53F6C7"
+  default_prompt: "Use $harness-graph-loop-builder to design a reviewable Harness-Graph-Loop Blueprint for my goal before building it."
+policy:
+  allow_implicit_invocation: true

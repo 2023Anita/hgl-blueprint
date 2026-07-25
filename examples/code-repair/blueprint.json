@@ -1,0 +1,170 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "name": "Bounded Code Repair",
+    "slug": "bounded-code-repair",
+    "owner": "repository maintainer",
+    "description": "Repair one reproducible defect with a minimal change and behavioral evidence."
+  },
+  "lifecycle": {
+    "phase": "review",
+    "approval": {
+      "status": "pending",
+      "approved_by": "",
+      "decision_ref": ""
+    }
+  },
+  "harness": {
+    "provider": "provider-neutral",
+    "tools": [
+      {
+        "id": "repository-read",
+        "purpose": "Inspect scoped source, tests, and configuration."
+      },
+      {
+        "id": "project-edit",
+        "purpose": "Apply the smallest project-local repair after design approval."
+      },
+      {
+        "id": "test-runner",
+        "purpose": "Execute declared regression and behavior tests."
+      }
+    ],
+    "permissions": {
+      "allowed": [
+        "read scoped repository files",
+        "run local tests",
+        "edit approved project files"
+      ],
+      "approval_required": [
+        "git commit",
+        "git push",
+        "external publication"
+      ],
+      "denied": [
+        "secret exfiltration",
+        "production deployment",
+        "unscoped file deletion"
+      ]
+    },
+    "budgets": {
+      "max_nodes": 6,
+      "max_iterations_per_loop": 3,
+      "max_runtime_seconds": 1200,
+      "max_result_chars": 4000
+    },
+    "state": {
+      "root": ".hgl-state",
+      "persist_events": true,
+      "resumable": true
+    }
+  },
+  "graph": {
+    "entrypoints": [
+      "reproduce"
+    ],
+    "nodes": [
+      {
+        "id": "reproduce",
+        "purpose": "Reproduce the reported defect and capture the failing behavior.",
+        "dependencies": [],
+        "result_schema": {
+          "type": "object",
+          "required": [
+            "status",
+            "evidence",
+            "failure_signature"
+          ]
+        },
+        "loop": {
+          "gather": "Read only the report, relevant entry point, and current tests.",
+          "act": "Run the smallest command that reproduces the defect.",
+          "verify": "Require a stable failing assertion or behavior trace.",
+          "max_attempts": 2,
+          "on_failure": "block"
+        }
+      },
+      {
+        "id": "repair",
+        "purpose": "Implement the smallest change that addresses the reproduced cause.",
+        "dependencies": [
+          "reproduce"
+        ],
+        "result_schema": {
+          "type": "object",
+          "required": [
+            "status",
+            "changed_files",
+            "evidence"
+          ]
+        },
+        "loop": {
+          "gather": "Use the failure signature and only directly related source files.",
+          "act": "Apply one minimal repair and add or strengthen a regression test.",
+          "verify": "Run the regression test and relevant existing test subset.",
+          "max_attempts": 3,
+          "on_failure": "repair"
+        }
+      },
+      {
+        "id": "independent-review",
+        "purpose": "Check behavior, scope, and regression risk without producer reasoning.",
+        "dependencies": [
+          "repair"
+        ],
+        "result_schema": {
+          "type": "object",
+          "required": [
+            "status",
+            "findings",
+            "evidence"
+          ]
+        },
+        "loop": {
+          "gather": "Read the defect, diff, and test output but not hidden reasoning.",
+          "act": "Inspect the changed behavior and probe one exception path.",
+          "verify": "Require passing regression evidence and no blocking finding.",
+          "max_attempts": 1,
+          "on_failure": "block"
+        }
+      }
+    ]
+  },
+  "verification": {
+    "criteria": [
+      {
+        "id": "AC-01",
+        "outcome": "The original defect is reproducible before the repair and absent after it.",
+        "verifier": "Regression test executed against before/after behavior.",
+        "evidence": "Test command, exit status, and captured failing/passing assertion.",
+        "owner": "test-runner",
+        "blocking": true
+      },
+      {
+        "id": "AC-02",
+        "outcome": "Relevant existing tests and one exception path pass.",
+        "verifier": "Scoped behavior test suite and independent review.",
+        "evidence": "Test log and review result envelope.",
+        "owner": "independent-review",
+        "blocking": true
+      }
+    ]
+  },
+  "outputs": {
+    "targets": [
+      "codex",
+      "python",
+      "docs"
+    ],
+    "root": "generated"
+  },
+  "provenance": {
+    "sources": [
+      {
+        "title": "User-provided defect report",
+        "location": "project issue or task input"
+      }
+    ]
+  }
+}
+

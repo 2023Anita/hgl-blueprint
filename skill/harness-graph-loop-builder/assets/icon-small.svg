@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="HGL Blueprint">
+  <defs>
+    <linearGradient id="g" x1="12" y1="12" x2="116" y2="116">
+      <stop stop-color="#53F6C7"/>
+      <stop offset="1" stop-color="#6A7CFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#071015"/>
+  <path d="M28 34v60M100 34v60M28 64h72" fill="none" stroke="url(#g)" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="28" cy="34" r="9" fill="#53F6C7"/>
+  <circle cx="28" cy="94" r="9" fill="#53F6C7"/>
+  <circle cx="100" cy="34" r="9" fill="#6A7CFF"/>
+  <circle cx="100" cy="94" r="9" fill="#6A7CFF"/>
+  <circle cx="64" cy="64" r="12" fill="#F5F1E8"/>
+</svg>

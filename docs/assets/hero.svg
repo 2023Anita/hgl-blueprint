@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 440" role="img" aria-labelledby="title desc">
+  <title id="title">HGL Blueprint</title>
+  <desc id="desc">A luminous blueprint graph connecting Harness, Graph, and Loop</desc>
+  <defs>
+    <linearGradient id="signal" x1="180" y1="80" x2="1220" y2="350">
+      <stop stop-color="#53F6C7"/>
+      <stop offset=".52" stop-color="#D8F36B"/>
+      <stop offset="1" stop-color="#6A7CFF"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#36505A" stroke-opacity=".22"/>
+    </pattern>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1400" height="440" rx="28" fill="#071015"/>
+  <rect width="1400" height="440" rx="28" fill="url(#grid)"/>
+  <g opacity=".32" fill="none" stroke="#9FB2BA">
+    <path d="M60 56h140M60 72h86M1200 368h140M1254 384h86"/>
+    <circle cx="78" cy="374" r="26"/><path d="M62 374h32M78 358v32"/>
+  </g>
+  <path d="M226 222H480C560 222 546 126 632 126h156c88 0 70 178 164 178h228" fill="none" stroke="url(#signal)" stroke-width="4" filter="url(#glow)"/>
+  <g fill="#071015" stroke-width="3">
+    <circle cx="226" cy="222" r="18" stroke="#53F6C7"/>
+    <circle cx="632" cy="126" r="18" stroke="#D8F36B"/>
+    <circle cx="952" cy="304" r="18" stroke="#6A7CFF"/>
+    <circle cx="1180" cy="304" r="18" stroke="#53F6C7"/>
+  </g>
+  <g font-family="Georgia,serif" fill="#F6F0E4">
+    <text x="104" y="142" font-size="28" letter-spacing="4">HGL BLUEPRINT</text>
+    <text x="104" y="200" font-size="56" font-weight="700">Design before execution.</text>
+  </g>
+  <text x="106" y="262" fill="#A3B4BA" font-family="Arial,sans-serif" font-size="20" letter-spacing="1.4">INTENT  →  BLUEPRINT  →  APPROVAL  →  BUILD  →  EVIDENCE</text>
+  <g font-family="Arial,sans-serif" font-size="14" letter-spacing="2">
+    <text x="195" y="264" fill="#53F6C7">HARNESS</text>
+    <text x="600" y="90" fill="#D8F36B">GRAPH</text>
+    <text x="928" y="346" fill="#8795FF">LOOP</text>
+    <text x="1137" y="346" fill="#53F6C7">VERIFY</text>
+  </g>
+</svg>

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hgl-blueprint.dev/schema/blueprint-1.0.0.json",
+  "title": "HGL Blueprint",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "identity",
+    "lifecycle",
+    "harness",
+    "graph",
+    "verification",
+    "outputs",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "identity": {
+      "type": "object",
+      "required": ["name", "slug", "owner", "description"]
+    },
+    "lifecycle": {
+      "type": "object",
+      "required": ["phase", "approval"]
+    },
+    "harness": {
+      "type": "object",
+      "required": ["provider", "tools", "permissions", "budgets", "state"]
+    },
+    "graph": {
+      "type": "object",
+      "required": ["entrypoints", "nodes"]
+    },
+    "verification": {
+      "type": "object",
+      "required": ["criteria"]
+    },
+    "outputs": {
+      "type": "object",
+      "required": ["targets", "root"]
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["sources"]
+    }
+  },
+  "additionalProperties": false
+}

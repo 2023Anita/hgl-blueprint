@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#071015">
+    <meta name="description" content="HGL Blueprint designs bounded Harness-Graph-Loop systems before they run.">
+    <title>HGL Blueprint — Design before execution</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="assets/app.js" defer></script>
+  </head>
+  <body>
+    <canvas id="signal-field" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="masthead">
+      <a class="brand" href="#top" aria-label="HGL Blueprint">
+        <svg viewBox="0 0 52 52" aria-hidden="true">
+          <path d="M8 8v36M44 8v36M8 26h36"/>
+          <circle cx="8" cy="8" r="3"/><circle cx="8" cy="44" r="3"/>
+          <circle cx="44" cy="8" r="3"/><circle cx="44" cy="44" r="3"/>
+          <circle cx="26" cy="26" r="4"/>
+        </svg>
+        <span>HGL <i>Blueprint</i></span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#architecture" data-i18n="navArchitecture">Architecture</a>
+        <a href="#contract" data-i18n="navContract">Contract</a>
+        <a href="#principles" data-i18n="navPrinciples">Principles</a>
+      </nav>
+      <div class="language" role="group" aria-label="Language">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="zh">中</button>
+        <button type="button" data-lang="ja">日</button>
+        <button type="button" data-lang="ko">한</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="eyebrow reveal">
+          <span class="live-dot"></span>
+          <span data-i18n="eyebrow">Specification-first agent systems</span>
+        </div>
+        <h1 class="reveal delay-1">
+          <span data-i18n="heroLine1">Design the system</span>
+          <em data-i18n="heroLine2">before it runs.</em>
+        </h1>
+        <p class="hero-copy reveal delay-2" data-i18n="heroCopy">
+          Turn intent into a bounded Harness–Graph–Loop Blueprint. Validate it.
+          Ask a human. Only then generate the system.
+        </p>
+        <div class="hero-actions reveal delay-3">
+          <a class="button primary" href="#contract">
+            <span data-i18n="exploreContract">Explore the contract</span>
+            <span aria-hidden="true">↘</span>
+          </a>
+          <a class="button ghost" href="https://github.com/2023Anita/hgl-blueprint">
+            <span data-i18n="viewSource">View source</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <div class="compiler reveal delay-4" aria-label="Blueprint lifecycle">
+          <div class="compiler-head">
+            <span>HGL / COMPILE TRACE</span>
+            <span class="trace-status" data-i18n="awaitingApproval">AWAITING HUMAN APPROVAL</span>
+          </div>
+          <ol>
+            <li class="done"><b>01</b><span data-i18n="stepIntent">Intent bounded</span><i>PASS</i></li>
+            <li class="done"><b>02</b><span data-i18n="stepBlueprint">Blueprint typed</span><i>PASS</i></li>
+            <li class="active"><b>03</b><span data-i18n="stepApproval">Human decision</span><i>GATE</i></li>
+            <li><b>04</b><span data-i18n="stepBuild">System generated</span><i>HOLD</i></li>
+            <li><b>05</b><span data-i18n="stepEvidence">Evidence verified</span><i>HOLD</i></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="manifesto">
+        <p class="section-index">01 / WHY</p>
+        <div>
+          <h2 data-i18n="whyTitle">More agents are not a design.</h2>
+          <p data-i18n="whyCopy">
+            Reliability comes from explicit boundaries: what enters, what may
+            act, what returns, what proves success, and when the system stops.
+          </p>
+        </div>
+        <aside>
+          <span data-i18n="smallestShape">Choose the smallest justified shape</span>
+          <strong>1 → N</strong>
+        </aside>
+      </section>
+
+      <section class="architecture" id="architecture">
+        <div class="section-heading">
+          <p class="section-index">02 / SYSTEM</p>
+          <h2 data-i18n="architectureTitle">Three layers. One enforceable contract.</h2>
+        </div>
+        <div class="layer-stack">
+          <article class="layer harness">
+            <div class="layer-number">03</div>
+            <div>
+              <p class="mono">HARNESS / RUNTIME POLICY</p>
+              <h3 data-i18n="harnessTitle">Control the environment.</h3>
+              <p data-i18n="harnessCopy">Tools, permissions, context, budgets, state, evidence, cancellation, and provider boundaries.</p>
+            </div>
+            <span class="layer-signal">BOUND</span>
+          </article>
+          <article class="layer graph">
+            <div class="layer-number">02</div>
+            <div>
+              <p class="mono">GRAPH / DEPENDENCY MODEL</p>
+              <h3 data-i18n="graphTitle">Wire only real dependencies.</h3>
+              <p data-i18n="graphCopy">Typed nodes, explicit edges, entry points, failure routes, fan-in, and independent review.</p>
+            </div>
+            <span class="layer-signal">ROUTE</span>
+          </article>
+          <article class="layer loop">
+            <div class="layer-number">01</div>
+            <div>
+              <p class="mono">LOOP / BOUNDED UNIT</p>
+              <h3 data-i18n="loopTitle">Make feedback change the next attempt.</h3>
+              <p data-i18n="loopCopy">Gather, act, verify, repair, persist, and stop—inside a finite budget.</p>
+            </div>
+            <span class="layer-signal">VERIFY</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="contract" id="contract">
+        <div class="contract-copy">
+          <p class="section-index">03 / BLUEPRINT</p>
+          <h2 data-i18n="contractTitle">A design artifact a human can reject.</h2>
+          <p data-i18n="contractCopy">The Blueprint is provider-neutral, machine-validatable, and unable to approve itself. Material changes return it to review.</p>
+          <ul>
+            <li><span>01</span><b data-i18n="contractOne">Typed result envelopes, never transcripts</b></li>
+            <li><span>02</span><b data-i18n="contractTwo">Disjoint permission classes</b></li>
+            <li><span>03</span><b data-i18n="contractThree">Finite retry and no-progress budgets</b></li>
+            <li><span>04</span><b data-i18n="contractFour">Evidence-bound completion</b></li>
+          </ul>
+        </div>
+        <div class="blueprint-card">
+          <div class="blueprint-grid"></div>
+          <div class="bp-label top">BLUEPRINT / 1.0.0</div>
+          <div class="bp-label bottom" data-i18n="reviewState">STATE: REVIEW</div>
+          <div class="bp-node n1"><span>INTENT</span></div>
+          <div class="bp-node n2"><span>HARNESS</span></div>
+          <div class="bp-node n3"><span>GRAPH</span></div>
+          <div class="bp-node n4"><span>LOOP</span></div>
+          <div class="bp-node n5"><span>EVIDENCE</span></div>
+          <svg viewBox="0 0 600 560" aria-hidden="true">
+            <path d="M90 110H298V215M298 215H488M298 215V355M298 355H490M298 355V470"/>
+          </svg>
+        </div>
+      </section>
+
+      <section class="principles" id="principles">
+        <div class="section-heading">
+          <p class="section-index">04 / INVARIANTS</p>
+          <h2 data-i18n="principlesTitle">No theatre. No silent escalation.</h2>
+        </div>
+        <div class="principle-grid">
+          <article><span>01</span><h3 data-i18n="p1Title">Fail closed</h3><p data-i18n="p1Copy">Missing evidence never becomes success.</p></article>
+          <article><span>02</span><h3 data-i18n="p2Title">Least privilege</h3><p data-i18n="p2Copy">Each phase receives only the capabilities it needs.</p></article>
+          <article><span>03</span><h3 data-i18n="p3Title">Honest adapters</h3><p data-i18n="p3Copy">Unsupported runtimes remain future work, not badges.</p></article>
+          <article><span>04</span><h3 data-i18n="p4Title">Durable handoff</h3><p data-i18n="p4Copy">A fresh agent can resume without reconstructing chat history.</p></article>
+        </div>
+      </section>
+
+      <section class="finale">
+        <p class="mono">HGL BLUEPRINT / V1</p>
+        <h2 data-i18n="finalTitle">Build fewer systems.<br>Trust the ones you build.</h2>
+        <p data-i18n="finalCopy">Provider-neutral by design. Codex-first in version one.</p>
+        <a class="button primary" href="https://github.com/2023Anita/hgl-blueprint">
+          <span data-i18n="readDocs">Read the documentation</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </section>
+    </main>
+
+    <footer>
+      <span>HGL BLUEPRINT © 2026</span>
+      <span data-i18n="footer">MIT · Independent project · Explicit provenance</span>
+    </footer>
+    <noscript>This site needs JavaScript for language switching and the animated graph.</noscript>
+  </body>
+</html>

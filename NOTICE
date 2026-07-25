@@ -1,0 +1,14 @@
+HGL Blueprint is an independent project inspired by:
+
+Archive228/loop-graph-harness
+https://github.com/Archive228/loop-graph-harness
+
+That repository demonstrates a minimal Loop -> Graph -> Harness teaching
+pipeline and is distributed under the MIT License. HGL Blueprint does not
+claim ownership of those underlying concepts. Its specification-first
+Blueprint lifecycle, approval model, validators, adapters, generator, and
+multilingual site are independently designed for this project.
+
+If source code is reused in the future, preserve the relevant copyright and
+license notice in the reused file and update this NOTICE.
+
